@@ -1,0 +1,16 @@
+kprobe:vfs_read
+{
+    @start[tid] = nsecs;
+}
+
+kretprobe:vfs_read
+/@start[tid]/
+{
+    @time = hist(nsecs - @start[tid]);
+    delete(@start[tid]);
+}
+
+END
+{
+    print(@time);
+}

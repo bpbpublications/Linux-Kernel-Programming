@@ -1,0 +1,5 @@
+tracepoint:kmem:kmalloc
+/args->bytes > 1024/
+{
+    printf("Large allocation: %d bytes by %s\n", args->bytes, comm);
+}

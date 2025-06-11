@@ -1,0 +1,5 @@
+tracepoint:inet:inet_sock_set_state
+/args->protocol == IPPROTO_TCP && args->newstate == TCP_ESTABLISHED/
+{
+    printf("TCP connection from %s to %s\n", ntop(args->sport), ntop(args->dport));
+}

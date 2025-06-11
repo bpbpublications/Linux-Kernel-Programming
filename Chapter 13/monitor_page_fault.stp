@@ -1,0 +1,9 @@
+tracepoint:vm:vm_fault
+{
+    @faults[comm] = count();
+}
+
+interval:s:10
+{
+    print(@faults);
+}

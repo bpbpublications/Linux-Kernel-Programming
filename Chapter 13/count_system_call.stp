@@ -1,0 +1,9 @@
+tracepoint:raw_syscalls:sys_enter
+{
+    @syscalls[comm] = count();
+}
+
+interval:s:5
+{
+    print(@syscalls);
+}

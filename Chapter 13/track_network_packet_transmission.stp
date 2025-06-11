@@ -1,0 +1,4 @@
+tracepoint:net:net_dev_xmit
+{
+    printf("Packet transmitted: %d bytes by %s\n", args->len, comm);
+}

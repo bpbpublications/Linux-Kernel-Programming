@@ -1,0 +1,3 @@
+probe kernel.function("vfs_read") {
+    printf("vfs_read called by %s\n", execname())
+}

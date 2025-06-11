@@ -1,0 +1,4 @@
+tracepoint:sched:sched_switch
+{
+    printf("Context switch: %s -> %s\n", str(args->prev_comm), str(args->next_comm));
+}

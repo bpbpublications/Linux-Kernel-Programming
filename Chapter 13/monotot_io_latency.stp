@@ -1,0 +1,16 @@
+tracepoint:block:block_rq_issue
+{
+    @start[args->sector] = nsecs;
+}
+
+tracepoint:block:block_rq_complete
+/@start[args->sector]/
+{
+    @latency = hist(nsecs - @start[args->sector]);
+    delete(@start[args->sector]);
+}
+
+END
+{
+    print(@latency);
+}
